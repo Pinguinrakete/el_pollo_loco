@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-visible{
+    visibility: visible;
+}
+
+.d-hidden {
+    visibility: hidden;
+}
+
+.d_flex_jc_c {
+    display: flex;
+    justify-content: center;
+}
+
+.d_flex_c_c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.d_flex_jc_sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.d_flex_fd_r {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+ }
+
+.d_flex_fd_c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

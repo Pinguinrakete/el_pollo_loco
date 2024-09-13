@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" lang="x-none">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/standard.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/icons/favicon.png">
+    <title>El Pollo Loco</title>
+    <script src="models/audio.class.js"></script>
+    <script src="models/drawable-object.class.js"></script> 
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/items.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/statusbar.class.js"></script>   
+    <script src="models/background-object.class.js"></script> 
+    <script src="models/keyboard.class.js"></script> 
+    <script src="models/level.class.js"></script> 
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/endboss.class.js"></script> 
+    <script src="levels/level1.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/world.class.js"></script> 
+    <script src="js/game.js"></script>
+</head>
+    <body>
+        <div class="position-canvas">
+            <h1 id="title">El Pollo Loco</h1>
+            <div class="bg-picture-canvas" id="bg-picture-canvas">
+                <nav class="navbar d_flex_jc_sb">            
+                    <div id="navbar-left">  
+                        <img class="size-icon" onclick="play()" src="./img/icons/play.png" alt="start the game" title="start the game">
+                        <img class="size-icon" onclick="information()" src="./img/icons/information.png" alt="legal notice / privacy policy" title="legal notice / privacy policy">
+                        <img class="size-icon" onclick="traitKeyboard()" src="./img/icons/keyboard.png" alt="Show the important keys" title="Show the important keys">
+                    </div>
+                    <div>
+                        <img class="size-icon d-hidden" onclick="restartGame()" id="restart-icon" src="./img/icons/restart.png" alt="restart the game" title="restart the game">
+                        <img class="size-icon" onclick="sounds()" id="sounds-icon" src="./img/icons/sounds.png" alt="Sounds on/off" title="sounds on/off">
+                        <img class="size-icon" onclick="bgMusic()" id="speaker-icon" src="./img/icons/speaker-mute.png" alt="background music on/off" title="background music on/off">
+                    </div>
+                </nav>
+                <div class="data-protection d_flex_c_c d-hidden" id="data-protection">
+                    <button class="button-data-protection button-dp-shadow" id="legal-notice" onclick="legalNotice()">legal notice</button>
+                    <button class="button-data-protection button-dp-shadow" id="privacy-policy" onclick="privacyPolicy()">privacy policy</button>
+                </div>
+                <div class="d_flex_c_c">
+                    <div class="impressum d-none" id="impressum"></div>
+                </div>
+                <div class="start-game-container d_flex_c_c" id="startgame">
+                    <button class="button-dp-shadow" onclick="startGame()" id="start-game">Start the game!</button>
+                </div>
+                <div class="loading position-loading d-none" id="loading">
+                    <div class="bg-loading d_flex_c_c">
+                        <div class="loader" id="loading">Loading</div>
+                    </div>
+                </div>
+                <nav class="control-bar" id="control-bar">
+                    <div class="distance-control-keys">
+                        <img class="control-icon" onclick="moveLeft()" id="touch-left" src="./img/icons/left-arrow.png" alt="control key arrow left" title="control key arrow left">
+                        <img class="control-icon" onclick="moveRight()" id="touch-right" src="./img/icons/right-arrow.png" alt="control key arrow right" title="control key arrow right">
+                    </div>  
+                    <div class="distance-control-keys">
+                        <img class="control-icon" onclick="moveUp()" id="touch-up" src="./img/icons/up-arrow.png" alt="control key arrow up" title="control key arrow up">
+                        <img class="control-icon" onclick="jump()" id="touch-d" src="./img/icons/letter-d.png" alt="control key d (throw)" title="control key d (throw)">
+                    </div>
+                </nav>  
+            </div>
+            <canvas class="d-none" id="canvas" height="480" width="720">Dein Browser unterstützt kein HTML!</canvas>
+            <div class="d_flex_c_c">
+                <img class="rotate-screen" src="./img/icons/rotate-screen.png" ></img>
+            </div>
+        </div>
+    </body>
+</html>
