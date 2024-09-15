@@ -10,11 +10,11 @@ let koordinatenItems =
     "Coin-X-coordinate": [500, 575, 650, 725, 1200, 1200, 1200, 1250, 1250, 1250, 1600, 1925, 2000, 2075, 2000, 2000, 2500, 2575, 2650, 2725, 3100, 3175, 3250, 3325, 3400, 3250, 3250, 3250, 3800, 3800, 3800, 3850, 3850, 3850, 4200, 4275, 4350, 4350, 4350, 4425, 4700, 4775, 4850, 4925, 5200, 5275, 5350, 5350, 5350, 5425],
     "Coin-Y-coordinate": [100, 70, 70, 100, 40, 90, 140, 40, 90, 140, 20, 40, 40, 40, 90, 140, 100, 70, 70, 100, 310, 310, 310, 310, 310, 40, 90, 140, 40, 90, 140, 40, 90, 140, 100, 100, 55, 100, 145, 100, 100, 70, 70, 100, 100, 100, 55, 100, 145, 100],
     "LeftBottle-X-coordinate": [550, 1550, 2400, 3550],
-    "LeftBottle-Y-coordinate": [345, 345, 345, 345],
+    "LeftBottle-Y-coordinate": [338, 338, 338],
     "VerticalBottle-X-coordinate": [3000, 5500],
-    "VerticalBottle-Y-coordinate": [345, 345],
+    "VerticalBottle-Y-coordinate": [338, 338],
     "RightBottle-X-coordinate": [1900, 4000, 4025, 5000],
-    "RightBottle-Y-coordinate": [345, 345, 345, 345]
+    "RightBottle-Y-coordinate": [338, 338, 338, 338]
 };
 
 /**
@@ -33,7 +33,7 @@ function createLevel() {
     ],
     [
     ],
-      [new HealthBar(-10), new CoinBar(35), new BottleBar(80)]
+        [new HealthBar(-10), new CoinBar(35), new BottleBar(80)]
     );
 }
 
@@ -42,7 +42,7 @@ function createLevel() {
  */
 function addObjectsToTheLevel() {
     fillBackground();
-    fillItems(0); // 0 ... load all items or 1 ... load all bottles without coins 
+    fillItems(0);
     fillEnemies();
 }
 
@@ -96,7 +96,7 @@ function fillItems(load) {
  * Fills the level with enemies such as Chickens and Small Chickens.
  */
 function fillEnemies() {
-    for(let i = 0; i < 30; i++) {   
+    for(let i = 0; i < 20; i++) {
         world.level.enemies.push(new Chicken());
         world.level.enemies.push(new SmallChicken());
     }

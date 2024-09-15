@@ -25,15 +25,18 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} True if the object is above the ground, otherwise false.
      */
     isAboveGround() {
-        if (this instanceof ThrowableObject) { // Throwable object should always fall
-            return this.y < 358;
+        if (this instanceof ThrowableObject) {
+            return this.y < 332;
+        } else if (this instanceof Character) {
+            return this.y < 143;
         } else if (this instanceof SmallChicken) {
-            return this.y < 360;
+            return this.y < 352;
         } else if (this instanceof Endboss) {
             return this.y < 110;
-        } else {
-            return this.y < 155;
-        }
+        } 
+        // else {
+        //     return this.y < 155;
+        // }
     }
 
     /**
@@ -159,6 +162,9 @@ class MovableObject extends DrawableObject {
             if (this.x - world.character.x < 200) {
                 this.speedY = 25 * Math.random();
             }
+            if (this.y > 360) {
+                this.y = 360; 
+            }
         }
 
         if (this instanceof Endboss) {
@@ -205,7 +211,7 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} - Returns true if the bottle is above the ground.
      */
     bottleIsNotOnTheGround() {
-        return this.y < 359;
+        return this.y < 330;
     }
 
     /**
@@ -214,7 +220,7 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} - Returns true if the bottle has hit the ground.
      */
     bottleSplashedOnTheGround() {
-        return this.y > 340;
+        return this.y > 330;
     }
 
     /**

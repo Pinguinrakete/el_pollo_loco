@@ -120,6 +120,13 @@ span {
     width: 100%;
 }
 
+.endscreen {
+    position: absolute;
+    z-index: 8;
+    height: 100vh;
+    width: 100%;
+}
+
 .loading {
     z-index: 8;
 }
@@ -159,7 +166,7 @@ button:hover, .size-icon:hover, .button-data-protection:hover {
     transform: scale(1.15);
 }
 
-.button-data-protection {
+.button-data-protection, .endscreen-button {
     font-size: 28px;
     color: white; 
     margin: 0px 15px; 
@@ -169,8 +176,15 @@ button:hover, .size-icon:hover, .button-data-protection:hover {
     background-color: rgb(31,165,204);
 }
 
+.endscreen-button {
+    background-image: linear-gradient(to right, rgb(255, 175, 0),rgb(255, 200, 15));
+}
+
 .button-dp-shadow {
     box-shadow: 5px 10px #888888; 
+}
+.button-shadow {
+    box-shadow: 5px 10px #7D2F13; 
 }
 
 .impressum {

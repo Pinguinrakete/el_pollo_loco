@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     offset = {top: 108, bottom: 14, left: 13, right: 26};
     x = 120;
-    y = 155;
+    y = 143;
     height = 280;
     width = 100;
     speed = 10;
@@ -163,9 +163,9 @@ class Character extends MovableObject {
         if (timer < 3) {
             this.world.audio.sounds['isSnoring'].pause();
             this.loadImage(this.IMAGES_WALKING[0]);
-        } else if (timer > 4 && timer < 7) {
+        } else if (timer > 2 && timer < 5) {
             this.playAnimation(this.IMAGES_IDLE);
-        } else if (timer > 8) {
+        } else if (timer > 6) {
             this.playAnimation(this.IMAGES_LONG_IDLE);
             this.world.audio.playSound('isSnoring');
         }    
@@ -377,7 +377,7 @@ class Character extends MovableObject {
      * @returns {boolean} - Returns true if the character's y-coordinate is equal to 155.
      */
         pepeIsOnTheGround() {
-            return this.y == 155;
+            return this.y == 143;
         }
     
     /**
@@ -386,7 +386,7 @@ class Character extends MovableObject {
     peppeFellToTheGround() {
         setInterval(() => { 
             if (this.y > 155) {
-                this.y = 155; 
+                this.y = 143; 
             }
         }, 25);
     }

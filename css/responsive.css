@@ -1,6 +1,10 @@
 @media only screen and (max-width: 950px) {
     .position-canvas {
         transform: translate(0,0);
+
+    #touch-right, #touch-left, #touch-up, #touch-d {
+        touch-action: none;
+        }
     }
 
     canvas, .bg-picture-canvas {
@@ -51,7 +55,71 @@
         transform: translate(0,0);
         bottom: 18px;
     }
+
+    .d_flex_fd_c_jc_sb {
+        gap: 55%; 
+        transform: translate(0, -35px);
+    }
 }
+
+@media only screen and (max-height: 500px) {
+    .d_flex_fd_c_jc_sb {
+        gap: 53%; 
+    }
+}
+
+@media only screen and (max-height: 475px) {
+    .d_flex_fd_c_jc_sb {
+        gap: 51%; 
+    }
+}
+
+@media only screen and (max-height: 455px) {
+    .d_flex_fd_c_jc_sb {
+        gap: 54%; 
+        transform: translate(0, -50px);
+    }
+}
+
+@media only screen and (max-height: 425px) {
+    .d_flex_fd_c_jc_sb {
+        gap: 52%; 
+        transform: translate(0, -50px);
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .d_flex_fd_c_jc_sb {
+        transform: translate(0, -55px);
+    }
+}
+
+@media only screen and (max-height: 385px) {
+    .d_flex_fd_c_jc_sb {
+        transform: translate(0, -60px);
+    }
+}
+
+@media only screen and (max-height: 360px) {
+    .d_flex_fd_c_jc_sb {
+        transform: translate(0, -65px);
+    }
+}
+
+@media only screen and (max-height: 345px) {
+    .d_flex_fd_c_jc_sb {
+        gap: 50%; 
+    }
+}
+
+@media only screen and (max-height: 330px) {
+    .d_flex_fd_c_jc_sb {
+        transform: translate(0, -75px);
+        gap: 54%; 
+    }
+}
+
+
 
 @media (orientation: Portrait) and (max-height: 500px) {
     .position-canvas {

@@ -47,7 +47,7 @@ window.addEventListener("keydown", (e) => {
         closeFullscreen();
         e.preventDefault();
     }
-});
+}, { passive: false });
 
 /**
  * Handles keyboard key release events for game controls.
@@ -79,7 +79,7 @@ window.addEventListener("keyup", (e) => {
         keyboard.M = false;
         e.preventDefault();
     }
-});
+}, { passive: false });
 
 /**
  * Handles touch start events for game controls.
@@ -110,7 +110,7 @@ window.addEventListener("touchstart", (e) => {
     if(e.target.id === 'start-game') {
         startGame();
     }
-});
+}, { passive: false });
 
 /**
  * Handles touch end events for game controls.
@@ -137,4 +137,4 @@ window.addEventListener("touchend", (e) => {
         keyboard.D = false;
         e.preventDefault();
     }
-});
+}, { passive: false });

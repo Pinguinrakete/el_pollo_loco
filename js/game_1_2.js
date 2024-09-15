@@ -97,7 +97,7 @@ function clearAllIntervals() {
  * Starts the game, displaying the main screen and control elements.
  */
 function play() {
-    // world.audio.resetAllSounds();
+    removeEndscreen();
     addNavbarLeftUp();
     removeButtonsDataProtection();
     loadScreen('start/startscreen_1');
@@ -212,6 +212,20 @@ function removeStartButton() {
 }
 
 /**
+ * Add the endscreen with buttons.
+ */
+function addEndscreen() {
+    document.getElementById('endscreen').classList.remove('d-none');
+}
+
+/**
+ * Remove the endscreen with buttons.
+ */
+function removeEndscreen() {
+    document.getElementById('endscreen').classList.add('d-none');
+}
+
+/**
  * Displays the data protection buttons.
  */
 function addButtonsDataProtection() {
@@ -230,7 +244,25 @@ function removeButtonsDataProtection() {
  */
 function addNavbarLeftUp() {
     document.getElementById('navbar-left').classList.remove('d-hidden');
+    document.getElementById('menu-icon').classList.add('d-hidden');
 }
+
+/**
+* This function targets the element with the ID 'menu-icon' and removes the 'd-hidden' class,
+* ensuring that the menu icon becomes visible.
+ */
+function addMenuIcon() {
+    document.getElementById('menu-icon').classList.remove('d-hidden');
+}
+
+/**
+* This function targets the element with the ID 'menu-icon' and adds the 'd-hidden' class,
+* ensuring that the menu icon becomes visible.
+ */
+function removeMenuIcon() {
+    document.getElementById('menu-icon').classList.add('d-hidden');
+}
+
 
 /**
  * Displays the control bar.
@@ -284,18 +316,39 @@ function removeLoading() {
 }
 
 /**
- * Restarts the game by clearing intervals, hiding elements, and reinitializing the start screen.
+ * Restarts the game by resetting the game state, reloading necessary assets, and starting a new game session.
+ *
+ * This function removes any end or start screens, adds the loading screen, reinitializes the canvas and 
+ * game world, loads the level, and ensures that all game elements (like objects and UI components) are 
+ * properly displayed and set up. It also manages sound settings (mute/unmute) and begins the game loop.
  */
 function restartGame() {
-    world.audio.resetAllSounds();
+    removeStartButton();
+    removeEndscreen();
+    addLoading();
+    addCanvas();
+    createLevel();  
+    loadCanvasandWorld();
+    addObjectsToTheLevel();
+    visibleDashboardButtons();
+    soundsMuteOrUnmute();
+    start();
+}
+
+/**
+ * Displays the game over screen and performs necessary cleanup actions.
+ *
+ * This function sets the background image to the game over screen, clears all running intervals,
+ * adds an endscreen UI, and resets all audio in the game. It also applies a semi-transparent 
+ * background overlay for visual effect.
+ */
+function menu() {
+    removeMenuIcon();
+    addOpacityBackground(0.3);
     clearAllIntervals();
-    removeAndClearCanvas();
-    addNavbarLeftUp();
-    removeButtonsDataProtection();
-    loadScreen('start/startscreen_1');
-    removeLoading();
-    addStartButton();
-    removeImpressum();
+    loadScreen('game_over/game over');
+    addEndscreen();
+    world.audio.resetAllSounds();
 }
 
 /**
@@ -328,67 +381,4 @@ function soundsMuteOrUnmute() {
     } else {
         world.audio.muteAllSounds();
     }
-}
-
-/**
- * Toggles background music on and off and updates the speaker icon accordingly.
- */
-function bgMusic() {
-    if(backgroundMusicOn) {
-        backgroundMusic.pause();
-        backgroundMusicOn = false;
-        document.getElementById('speaker-icon').src = "./img/icons/speaker-mute.png";
-    } else {
-        backgroundMusic.play();
-        backgroundMusic.loop = true;
-        backgroundMusicOn = true;
-        document.getElementById('speaker-icon').src = "./img/icons/speaker.png";
-    }
-}
-
-/**
- * Loads privacy policy content from a JSON file and updates the specified element with the content.
- * 
- * @param {string} url - The ID of the element to update.
- * @param {string} content - The key for the content in the JSON file.
- * @returns {Promise<void>}
- */
-async function loadPrivacyPolicyJSON(url, content) {
-	let response = await fetch('./json-file/privacy-policy.json')
-    let respAsJson = await response.json();
-    let text = respAsJson[content];
-
-    return document.getElementById(url).innerHTML = text;
-}
-
-/**
- * Makes dashboard buttons visible.
- */
-function visibleDashboardButtons() {
-    document.getElementById('navbar-left').classList.add('d-hidden');
-    document.getElementById('restart-icon').classList.remove('d-hidden');
-}
-
-/**
- * Loads a screen with the specified path as the background image.
- * 
- * @param {string} path - The path to the background image.
- */
-function loadScreen(path) {
-    document.getElementById('bg-picture-canvas').style.backgroundSize = "100% 100%";
-    document.getElementById('bg-picture-canvas').style.backgroundImage = "url('./img/9_intro_outro_screens/"+path+".png')";
-}
-
-/**
- * Displays the end screen with a specified path and restarts the game after a delay.
- * 
- * @param {string} path - The path to the end screen background image.
- */
-function endScreen(path) {
-    removeControlBar();
-    clearImpressum();
-    clearAllIntervals();
-    loadScreen(path);
-    setTimeout(() => {document.getElementById('bg-picture-canvas').style.backgroundImage = "url('./img/9_intro_outro_screens/game_over/game over.png')";}, 3000);
-    setTimeout(() => {play()}, 6000);
 }
