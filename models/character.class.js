@@ -5,6 +5,7 @@ class Character extends MovableObject {
     height = 280;
     width = 100;
     speed = 10;
+    isJumping = false;
  
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -105,6 +106,7 @@ class Character extends MovableObject {
             this.nowYouCanLoadBottles();
             this.loadNewBottles();
             this.cameraAndPeppeMoved();
+            this.pepeIsOnLine();
         }, 1000 / 60);
 
 
@@ -137,9 +139,12 @@ class Character extends MovableObject {
             setTimeout(() => {endScreen('game_over/oh no you lost!')}, 1000);
         } else if (this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
-        } else if (this.isAboveGround()) {
+        } else if (this.isAboveGround() && !this.isJumping) {
             this.playAnimation(this.IMAGES_JUMPING);
+            this.isJumping = true;
         } else {
+            this.isJumping = false;
+        
             if (keyboard.RIGHT || keyboard.LEFT) {
                 this.playAnimation(this.IMAGES_WALKING);
             }
@@ -236,7 +241,7 @@ class Character extends MovableObject {
      * Makes the character jump and manages animations and the control bar.
      */
     moveUpJumpAndAnimationControlBar() {
-        if (keyboard.UP && !this.isAboveGround()) {
+        if (keyboard.UP && !this.isAboveGround() && !this.isJumping) {
             this.jump();
             this.isBored = true;
             this.styleTouchBtn(true,'up');   

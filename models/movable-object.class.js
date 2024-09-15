@@ -162,8 +162,8 @@ class MovableObject extends DrawableObject {
             if (this.x - world.character.x < 200) {
                 this.speedY = 25 * Math.random();
             }
-            if (this.y > 360) {
-                this.y = 360; 
+            if (this.y > 350) {
+                this.y = 360;
             }
         }
 
@@ -271,4 +271,13 @@ class MovableObject extends DrawableObject {
             return true;
         }
     }
+
+    /**
+     * Checks if the character is within a specific Y-axis boundary and adjusts the position if necessary.
+     */
+    pepeIsOnLine() {
+        if (this.y > 143) {
+            this.y = 143;
+        }
+    } 
 }

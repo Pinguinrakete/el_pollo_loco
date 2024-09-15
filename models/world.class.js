@@ -387,7 +387,6 @@ class World {
      * @param {Endboss} enemy - An instance of the Endboss class.
      */
     handleCollisionWithEndboss(enemy) {
-        console.log(world.level.enemies[0].energy);
         enemy.hitEndboss();
         this.changeContentStatusBar(3);
         this.character.killOneChicken = false;   

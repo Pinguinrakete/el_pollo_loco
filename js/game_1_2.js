@@ -331,6 +331,7 @@ function restartGame() {
     loadCanvasandWorld();
     addObjectsToTheLevel();
     visibleDashboardButtons();
+    addControlBar();
     soundsMuteOrUnmute();
     start();
 }
@@ -344,6 +345,7 @@ function restartGame() {
  */
 function menu() {
     removeMenuIcon();
+    removeControlBar();
     addOpacityBackground(0.3);
     clearAllIntervals();
     loadScreen('game_over/game over');
@@ -376,9 +378,11 @@ function soundsSwitchOnOff() {
  * Mutes or unmutes all sounds based on the current sound settings.
  */
 function soundsMuteOrUnmute() {
-    if (soundsOn) {
-        world.audio.unmuteAllSounds();
-    } else {
-        world.audio.muteAllSounds();
+    if (world !== undefined) {
+        if (soundsOn) {
+            world.audio.unmuteAllSounds();
+        } else {
+            world.audio.muteAllSounds();
+        }
     }
 }
