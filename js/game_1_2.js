@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
-let soundsOn = true;
+let soundsOn = false;
 let backgroundMusicOn = false;
 let backgroundMusic = new Audio('./audio/music/mariachi.mp3');
 

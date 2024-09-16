@@ -2,9 +2,7 @@ class Keyboard {
     LEFT = false;
     RIGHT = false;
     UP = false;
-    SPACE = false;
     D = false;
-    M = false;
 }
 
 /**
@@ -32,21 +30,6 @@ window.addEventListener("keydown", (e) => {
         keyboard.D = true;
         e.preventDefault();
     }
-
-    if(e.key === 'm') {
-        keyboard.M = true;
-        e.preventDefault();
-    }
-
-    if(e.key === 'f') {
-        openFullscreen();
-        e.preventDefault();
-    }
-
-    if(e.key === 'Escape') {
-        closeFullscreen();
-        e.preventDefault();
-    }
 }, { passive: false });
 
 /**
@@ -72,11 +55,6 @@ window.addEventListener("keyup", (e) => {
 
     if(e.key === 'd') {
         keyboard.D = false;
-        e.preventDefault();
-    }
-
-    if(e.key === 'm') {
-        keyboard.M = false;
         e.preventDefault();
     }
 }, { passive: false });

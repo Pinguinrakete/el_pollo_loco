@@ -165,10 +165,9 @@ class Character extends MovableObject {
     manageAnimationByTimer(timer) {
         timer = this.timer();
 
-        if (timer < 3) {
+        if (timer < 0.2) {
             this.world.audio.sounds['isSnoring'].pause();
-            this.loadImage(this.IMAGES_WALKING[0]);
-        } else if (timer > 2 && timer < 5) {
+        } else if (timer > 0.2 && timer < 5) {
             this.playAnimation(this.IMAGES_IDLE);
         } else if (timer > 6) {
             this.playAnimation(this.IMAGES_LONG_IDLE);
